@@ -1,0 +1,6 @@
+[submodule "ITLab-Front"]
+	path = ITLab-Front
+	url = https://github.com/RTUITLab/ITLab-Front.git
+[submodule "ITLab-Projects-Front"]
+	path = ITLab-Projects-Front
+	url = https://github.com/RTUITLab/ITLab-Projects-Front.git

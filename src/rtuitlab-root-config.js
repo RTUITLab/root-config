@@ -19,7 +19,7 @@ registerApplication({
   name: "@rtuitlab/projects",
   app: () => System.import("@rtuitlab/projects"),
   activeWhen: ["/projects"],
-  customProps: { projectAPIUrl: "http://localhost:5506/api/projects" },
+  customProps: { projectsAPIUrl: "http://localhost:5506/api/projects" },
 });
 
 start({

@@ -35,7 +35,7 @@ in the next folders:
 | Folder                | Command       | Default port |
 |-----------------------|---------------|--------------|
 | ./                    | npm start     | 9000         |
-| ./itlab-front         | npm run serve | 8081         |
+| ./itlab-front         | npm run serve | 9001         |
 | ./itlab-project-front | npm start     | 8500         |
 
 Application will be run on http://localhost:9000/

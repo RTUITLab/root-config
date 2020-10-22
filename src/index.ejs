@@ -41,25 +41,15 @@
   <script type="systemjs-importmap">
     {
       "imports": {
-        "vue-router": "https://cdn.jsdelivr.net/npm/vue-router@3.1.6/dist/vue-router.min.js",
-        "vue": "https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.min.js",
         "react": "https://unpkg.com/react@16/umd/react.development.js",
         "react-dom": "https://unpkg.com/react-dom@16/umd/react-dom.development.js",
         "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@5.5.0/lib/system/single-spa.min.js",
-        "@rtuitlab/root-config": "//localhost:9000/rtuitlab-root-config.js",
-        "@rtuitlab/itlab-front": "//localhost:8080/app.js",
-        "@rtuitlab/projects": "//localhost:8500/rtuitlab-projects.js"
+        "@rtuitlab/root-config": "//localhost:9000/rtuitlab-root-config.js"
       }
     }
   </script>
+  
   <% } %>
-
-  <!--
-    If you need to support Angular applications, uncomment the script tag below to ensure only one instance of ZoneJS is loaded
-    Learn more about why at https://single-spa.js.org/docs/ecosystem-angular/#zonejs
-  -->
-  <!-- <script src="https://cdn.jsdelivr.net/npm/zone.js@0.10.3/dist/zone.min.js"></script> -->
-
   <% if (isLocal) { %>
   <script src="https://cdn.jsdelivr.net/npm/import-map-overrides@1.14.6/dist/import-map-overrides.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/systemjs@6.3.1/dist/system.js"></script>

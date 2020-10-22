@@ -1,4 +1,6 @@
 import { registerApplication, start } from "single-spa";
+import * as isActive from "./activity-functions";
+import frontends from "./config.json";
 
 // registerApplication({
 //   name: "@single-spa/welcome",
@@ -10,16 +12,19 @@ import { registerApplication, start } from "single-spa";
 // });
 
 registerApplication({
-  name: "@rtuitlab/itlab-front",
-  app: () => System.import("@rtuitlab/itlab-front"),
-  activeWhen: ["/"],
+  name: "itlab-front",
+  app: () => System.import(frontends.itlab),
+  activeWhen: isActive.itLabFront,
 });
 
 registerApplication({
-  name: "@rtuitlab/projects",
-  app: () => System.import("@rtuitlab/projects"),
-  activeWhen: ["/projects"],
-  customProps: { projectsAPIUrl: "http://localhost:5506/api/projects" },
+  name: "projects",
+  app: () => System.import(frontends.projects),
+  activeWhen: isActive.projectsFront,
+  customProps: {
+    projectsAPIUrl: "http://localhost:5506/api/projects",
+    domElement: document.getElementById("projects-page"),
+  },
 });
 
 start({

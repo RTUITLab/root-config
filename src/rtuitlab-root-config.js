@@ -22,7 +22,7 @@ registerApplication({
   app: () => System.import(frontends.projects),
   activeWhen: isActive.projectsFront,
   customProps: {
-    projectsAPIUrl: "http://localhost:5506/api/projects",
+    projectsAPIUrl: "http://localhost:5503/api/",
     domElement: document.getElementById("projects-page"),
   },
 });

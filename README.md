@@ -1,7 +1,9 @@
 # RTU ITLab managing system frontend, that was splitted using single-spa.
 
 ## Project setup
+
 Create config.json in ./itlab-front/public with the next content:
+
 ```
 {
     "VUE_APP_AUTHORITY": "https://dev.identity.rtuitlab.ru",
@@ -14,7 +16,7 @@ Create config.json in ./itlab-front/public with the next content:
     "VUE_APP_VK_GROUP_DIALOG_URL": "https://vk.com/im?sel=-181627275",
     "VUE_APP_DEV_FUNC_ENABLED": true,
     "VUE_APP_FILES_BASE_ADDRESS": "https://dev.mfs.rtuitlab.ru"
-} 
+}
 ```
 
 Then run following command
@@ -23,7 +25,8 @@ Then run following command
 npm i
 ```
 
-in the next folders: 
+in the next folders:
+
 ```
 ./
 ./itlab-front
@@ -33,7 +36,7 @@ in the next folders:
 ## Project run
 
 | Folder                | Command       | Default port |
-|-----------------------|---------------|--------------|
+| --------------------- | ------------- | ------------ |
 | ./                    | npm start     | 9000         |
 | ./itlab-front         | npm run serve | 9001         |
 | ./itlab-project-front | npm start     | 8500         |

@@ -1,6 +1,7 @@
 const webpackMerge = require("webpack-merge");
 const singleSpaDefaults = require("webpack-config-single-spa");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require("path");
 
 module.exports = (webpackConfigEnv) => {
   const defaultConfig = singleSpaDefaults({
@@ -8,6 +9,11 @@ module.exports = (webpackConfigEnv) => {
     projectName: "root-config",
     webpackConfigEnv,
   });
+
+  defaultConfig.output.path = path.resolve(
+    __dirname,
+    "./deploy/ITLab-Root-Front"
+  );
 
   return webpackMerge.smart(defaultConfig, {
     // modify the webpack config however you'd like to by adding to this object

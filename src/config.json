@@ -1,4 +1,4 @@
 {
-  "projects": "http://localhost:8500/rtuitlab-projects.js",
-  "itlab": "http://localhost:9001/app.js"
+  "projects": "http://localhost:9002/",
+  "itlab": "http://localhost:9001/"
 }

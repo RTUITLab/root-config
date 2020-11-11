@@ -43,8 +43,7 @@
       "imports": {
         "react": "https://unpkg.com/react@16/umd/react.development.js",
         "react-dom": "https://unpkg.com/react-dom@16/umd/react-dom.development.js",
-        "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@5.5.0/lib/system/single-spa.min.js",
-        "@rtuitlab/root-config": "//localhost:9000/rtuitlab-root-config.js"
+        "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@5.5.0/lib/system/single-spa.min.js"
       }
     }
   </script>
@@ -64,7 +63,7 @@
 </head>
 <body style="padding: 0;">
   <script>
-    System.import('@rtuitlab/root-config');
+    System.import('./rtuitlab-root-config.js');
   </script>
   <import-map-overrides-full show-when-local-storage="devtools" dev-libs></import-map-overrides-full>
 </body>

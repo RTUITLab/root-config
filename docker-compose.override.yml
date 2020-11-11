@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  root-config:
+    build: deploy
+    ports:
+      - 9000:9000
+  front:
+    build: ITLab-Front/deploy
+    ports:
+      - 9001:9001
+  projects:
+    build: ITLab-Projects-Front/deploy
+    ports:
+      - 9002:9002

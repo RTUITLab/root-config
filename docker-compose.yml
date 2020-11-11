@@ -1,0 +1,9 @@
+version: "3.8"
+
+services:
+  root-config:
+    image: rtuitlab/itlab-front-root
+  front:
+    image: rtuitlab/itlab-front
+  projects:
+    image: rtuitlab/itlab-projects-front

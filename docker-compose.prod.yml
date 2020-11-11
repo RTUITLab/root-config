@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  root-config:
+    networks:
+      - net
+  front:
+    networks:
+      - net
+  projects:
+    networks:
+      - net
+
+networks:
+  net:
+    driver: overlay2

@@ -20,8 +20,6 @@ const configure = async () => {
     ).replace(/[^a-zA-Z0-9.]/g, "");
   }
 
-  console.log(frontends.itlab + (fileName ? "/js/" + fileName : ""));
-
   registerApplication({
     name: "itlab-front",
     app: () =>

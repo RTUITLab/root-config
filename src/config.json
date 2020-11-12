@@ -1,4 +1,4 @@
 {
-  "projects": "http://localhost:9002/",
-  "itlab": "http://localhost:9001/"
+  "projects": "http://127.0.0.1:9002",
+  "itlab": "http://127.0.0.1:9001"
 }

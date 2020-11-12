@@ -70,3 +70,4 @@ dist
 *.sln
 *.sw?
 deploy/ITLab-Root-Front
+stack.yml

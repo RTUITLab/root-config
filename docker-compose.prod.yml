@@ -7,10 +7,22 @@ services:
   front:
     networks:
       - net
+    environment:
+      - VUE_APP_API_URL=${VUE_APP_API_URL?Place backend url in VUE_APP_API_URL}
+      - VUE_APP_AUTHORITY=${VUE_APP_AUTHORITY?Place path to your authority OIDC service in VUE_APP_AUTHORITY}
+      - VUE_APP_CLIENT_ID=${VUE_APP_CLIENT_ID?Place client application's identifier as registered with the OIDC in VUE_APP_CLIENT_ID}
+      - VUE_APP_REDIRECT_URI=${VUE_APP_REDIRECT_URI?Place redirect page that will receive a response from OIDC service in VUE_APP_REDIRECT_URI}
+      - VUE_APP_RESPONSE_TYPE=${VUE_APP_RESPONSE_TYPE?Place the type of response desired from the OIDC in VUE_APP_RESPONSE_TYPE}
+      - VUE_APP_SCOPE=${VUE_APP_SCOPE?Place the scopes being requested from the OIDC in VUE_APP_SCOPE}
+      - VUE_APP_POST_LOGOUT_REDIRECT_URL=${VUE_APP_POST_LOGOUT_REDIRECT_URL?Place path to page after logout in VUE_APP_POST_LOGOUT_REDIRECT_URL}
+      - VUE_APP_SILENT_REDIRECT_URI=${VUE_APP_SILENT_REDIRECT_URI?Place path to page when silent login in VUE_APP_SILENT_REDIRECT_URI}
+      - VUE_APP_VK_GROUP_DIALOG_URL=${VUE_APP_VK_GROUP_DIALOG_URL?Place url to dialog with group at vk.com VUE_APP_VK_GROUP_DIALOG_URL}
+      - VUE_APP_DEV_FUNC_ENABLED=${VUE_APP_DEV_FUNC_ENABLED?Place enable/disable development settings in VUE_APP_DEV_FUNC_ENABLED}
   projects:
     networks:
       - net
-
+    environment:
+      - REACT_APP_API_URL=${REACT_APP_API_URL?Place url to projects backend in REACT_APP_API_URL}
 networks:
   net:
     driver: overlay2

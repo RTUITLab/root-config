@@ -1,9 +1,9 @@
 version: "3.8"
 
 services:
-  root-config:
+  proxy-front:
     image: rtuitlab/itlab-front-root
   front:
     image: rtuitlab/itlab-front
-  projects:
+  projects-front:
     image: rtuitlab/itlab-projects-front

@@ -1,6 +1,7 @@
 const webpackMerge = require("webpack-merge");
 const singleSpaDefaults = require("webpack-config-single-spa");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 const path = require("path");
 
 module.exports = (webpackConfigEnv) => {
@@ -27,6 +28,9 @@ module.exports = (webpackConfigEnv) => {
         templateParameters: {
           isLocal: webpackConfigEnv && webpackConfigEnv.isLocal === "true",
         },
+      }),
+      new CopyPlugin({
+        patterns: [{ from: "src/config.json", to: "." }],
       }),
     ],
   });

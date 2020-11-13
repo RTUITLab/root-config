@@ -1,6 +1,5 @@
 import { registerApplication, start } from "single-spa";
 import * as isActive from "./activity-functions";
-import frontends from "./config.json";
 
 // registerApplication({
 //   name: "@single-spa/welcome",
@@ -12,6 +11,7 @@ import frontends from "./config.json";
 // });
 
 const configure = async () => {
+  const frontends = await (await fetch("config.json")).json();
   let fileName = "";
 
   if (process.env.NODE_ENV === "production") {

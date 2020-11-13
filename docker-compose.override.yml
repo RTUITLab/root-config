@@ -2,12 +2,17 @@ version: "3.8"
 
 services:
   proxy-front:
-    build: deploy
+    build: ${FRONT_CONTEXT:-.}/deploy
+    restart: always
     ports:
       - 9000:9000
+    environment:
+      FRONT_ROOT_ITLAB: http://127.0.0.1:9000/front/front
   front:
-    build: ITLab-Front/deploy
+    build: ${FRONT_CONTEXT:-.}/ITLab-Front/deploy
+    restart: always
   projects-front:
-    build: ITLab-Projects-Front/deploy
+    build: ${FRONT_CONTEXT:-.}/ITLab-Projects-Front/deploy
+    restart: always
     ports:
       - 9002:9002

@@ -32,7 +32,9 @@ const configure = async () => {
     app: () => System.import(frontends.projects),
     activeWhen: isActive.projectsFront,
     customProps: {
-      projectsAPIUrl: "http://localhost:5503/api/projects",
+      projectsAPIUrl:
+        (frontends.projects_api_base || "http://localhost:5503") +
+        "/api/projects",
       domElement: document.getElementById("projects-page"),
     },
   });

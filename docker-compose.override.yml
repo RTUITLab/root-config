@@ -3,7 +3,7 @@ version: "3.8"
 services:
   proxy-front:
     build: ${FRONT_CONTEXT:-.}/deploy
-    restart: always
+    restart: on-failure
     ports:
       - 9000:9000
     environment:
@@ -11,9 +11,16 @@ services:
       FRONT_ROOT_PROJECTS: http://127.0.0.1.xip.io:9000/front/projects/rtuitlab-projects.js
   front:
     build: ${FRONT_CONTEXT:-.}/ITLab-Front/deploy
-    restart: always
+    restart: on-failure
+    ports:
+      - 9001:9001
   projects-front:
     build: ${FRONT_CONTEXT:-.}/ITLab-Projects-Front/deploy
-    restart: always
+    restart: on-failure
     ports:
       - 9002:9002
+  reports-front:
+    build: ${FRONT_CONTEXT:-.}/ITLab-Reports-Front
+    restart: on-failure
+    ports:
+      - 9003:9003

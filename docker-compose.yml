@@ -18,3 +18,5 @@ services:
       - VUE_APP_DEV_FUNC_ENABLED=${VUE_APP_DEV_FUNC_ENABLED?Place enable/disable development settings in VUE_APP_DEV_FUNC_ENABLED}
   projects-front:
     image: rtuitlab/itlab-projects-front
+  reports-front:
+    image: rtuitlab/itlab-reports-front

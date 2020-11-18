@@ -12,6 +12,7 @@ services:
       - net
     environment:
       - REACT_APP_API_URL=${REACT_APP_API_URL?Place url to projects backend in REACT_APP_API_URL}
+
 networks:
   net:
     driver: overlay2

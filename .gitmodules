@@ -4,3 +4,6 @@
 [submodule "ITLab-Projects-Front"]
 	path = ITLab-Projects-Front
 	url = https://github.com/RTUITLab/ITLab-Projects-Front.git
+[submodule "ITLab-Reports-Front"]
+	path = ITLab-Reports-Front
+	url = https://github.com/RTUITLab/ITLab-Reports-Front.git

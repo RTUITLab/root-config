@@ -7,8 +7,8 @@ services:
     ports:
       - 9000:9000
     environment:
-      FRONT_ROOT_ITLAB: http://127.0.0.1.xip.io:9000/front/front
-      FRONT_ROOT_PROJECTS: http://127.0.0.1.xip.io:9000/front/projects/rtuitlab-projects.js
+      FRONT_ROOT_ITLAB: http://127.0.0.1.xip.io:5500/front/front
+      FRONT_ROOT_PROJECTS: http://127.0.0.1.xip.io:5500/front/projects/rtuitlab-projects.js
   front:
     build: ${FRONT_CONTEXT:-.}/ITLab-Front/deploy
     restart: on-failure

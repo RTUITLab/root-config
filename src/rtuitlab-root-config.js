@@ -11,7 +11,7 @@ import * as isActive from "./activity-functions";
 // });
 
 const configure = async () => {
-  const frontends = await (await fetch("config.json")).json();
+  const frontends = await (await fetch("/config.json")).json();
   let fileName = "";
 
   if (process.env.NODE_ENV === "production") {

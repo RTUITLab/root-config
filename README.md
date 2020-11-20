@@ -35,11 +35,11 @@ in the next folders:
 
 ## Project run
 
-| Folder                | Command       | Default port |
-| --------------------- | ------------- | ------------ |
-| ./                    | npm start     | 9000         |
-| ./itlab-front         | npm run serve | 9001         |
-| ./itlab-project-front | npm start     | 9002         |
-| ./itlab-reports-front | dotnet run    | 9003         |
+| Folder                | Command       | Default port | CI/CD              |
+| --------------------- | ------------- | ------------ | ------------------ |
+| ./                    | npm start     | 9000         | no                 |
+| ./itlab-front         | npm run serve | 9001         | no                 |
+| ./itlab-project-front | npm start     | 9002         | :white_check_mark: |
+| ./itlab-reports-front | dotnet run    | 9003         | no                 |
 
 Application will be run on http://127.0.0.1.xip.io:9000/

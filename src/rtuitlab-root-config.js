@@ -35,12 +35,11 @@ const configure = async () => {
       projectsAPIUrl:
         (frontends.projects_api_base || "http://localhost:5503") +
         "/api/projects",
-      domElement: document.getElementById("projects-page"),
     },
   });
 
   start({
-    urlRerouteOnly: true,
+    urlRerouteOnly: false,
   });
 };
 

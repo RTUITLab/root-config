@@ -21,3 +21,8 @@ services:
     image: rtuitlab/itlab-projects-front
   reports-front:
     image: rtuitlab/itlab-reports-front
+    environment:
+      ConnectionStrings__ReportsApiBase: http://proxy:5500
+      ConnectionStrings__UsersApiBase: http://proxy:5500
+      ConnectionStrings__SalaryApiBase: http://proxy:5500
+      ConnectionStrings__FilesApiBase: http://proxy:5500/api/mfs

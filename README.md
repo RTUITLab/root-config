@@ -38,7 +38,7 @@ in the next folders:
 | Folder                | Command       | Default port | CI/CD              |
 | --------------------- | ------------- | ------------ | ------------------ |
 | ./                    | npm start     | 9000         | no                 |
-| ./itlab-front         | npm run serve | 9001         | no                 |
+| ./itlab-front         | npm run serve | 9001         | :white_check_mark: |
 | ./itlab-project-front | npm start     | 9002         | :white_check_mark: |
 | ./itlab-reports-front | dotnet run    | 9003         | no                 |
 

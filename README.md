@@ -43,3 +43,11 @@ in the next folders:
 | ./itlab-reports-front | dotnet run    | 9003         | no                 |
 
 Application will be run on http://127.0.0.1.xip.io:9000/
+
+### Commit error
+
+To fix commit hook run
+
+```bash
+npm run fixLint
+```

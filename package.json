@@ -2,6 +2,7 @@
   "scripts": {
     "start": "webpack-dev-server --mode=development --port 9000 --env.isLocal=true",
     "lint": "eslint src --ext js",
+    "fixLint": "eslint src --ext js --fix",
     "format": "prettier --write './**'",
     "build": "webpack --mode=production"
   },

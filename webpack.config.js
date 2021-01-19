@@ -25,6 +25,7 @@ module.exports = (webpackConfigEnv) => {
       new HtmlWebpackPlugin({
         inject: false,
         template: "src/index.ejs",
+        favicon: "src/favicon.ico",
         templateParameters: {
           isLocal: webpackConfigEnv && webpackConfigEnv.isLocal === "true",
         },

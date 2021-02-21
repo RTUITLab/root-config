@@ -10,7 +10,7 @@ Create config.json in ./itlab-front/public with the next content:
     "VUE_APP_CLIENT_ID": "itlab_spa",
     "VUE_APP_REDIRECT_URI": "http://localhost:9000/logincallback",
     "VUE_APP_RESPONSE_TYPE": "code",
-    "VUE_APP_SCOPE": "openid profile itlab.events itlab.projects itlab.salary",
+    "VUE_APP_SCOPE": "openid profile itlab.events itlab.projects itlab.salary itlab.reports",
     "VUE_APP_POST_LOGOUT_REDIRECT_URL": "http://localhost:9000",
     "VUE_APP_SILENT_REDIRECT_URI": "http://localhost:9000/silentcallback",
     "VUE_APP_VK_GROUP_DIALOG_URL": "https://vk.com/im?sel=-181627275",

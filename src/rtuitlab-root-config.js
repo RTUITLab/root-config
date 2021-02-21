@@ -20,11 +20,31 @@ const configure = async () => {
     ).replace(/[^a-zA-Z0-9.]/g, "");
   }
 
+  let userManager = (
+    await System.import(
+      frontends.itlab + (fileName ? "/js/" + fileName : "/app.js")
+    )
+  ).manager;
+
   registerApplication({
     name: "itlab-front",
     app: () =>
-      System.import(frontends.itlab + (fileName ? "/js/" + fileName : "")),
+      System.import(
+        frontends.itlab + (fileName ? "/js/" + fileName : "/app.js")
+      ),
     activeWhen: isActive.itLabFront,
+  });
+
+  registerApplication({
+    name: "itlab-reports",
+    app: () =>
+      System.import(
+        frontends.reports + (fileName ? "/js/" + fileName : "/app.js")
+      ),
+    activeWhen: isActive.reportsFront,
+    customProps: {
+      userManager: userManager,
+    },
   });
 
   registerApplication({

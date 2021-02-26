@@ -1,16 +1,42 @@
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '10.x'
-  displayName: 'Install Node.js'
+stages:
+- stage: Build
+  jobs:
+  - job: BuildFrontRoot
+    steps:
+    - task: NodeTool@0
+      inputs:
+        versionSpec: '10.x'
+      displayName: 'Install Node.js'
+    - script: |
+        npm ci
+        npm run build
+      displayName: 'npm ci, npm build'
+    - publish: deploy
+      artifact: itlab-front-root-build
 
-- script: |
-    npm ci
-    npm run build
-  displayName: 'npm ci, npm build'
-- publish: deploy
-  artifact: itlab-front-root-build
-
+- stage: PushDockerImage
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  displayName: Push Docker Image
+  jobs:  
+  - job: Build
+    displayName: Build
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - checkout: none
+    - download: current
+      artifact: itlab-front-root-build
+    - task: Docker@2
+      displayName: Build an image
+      inputs:
+        containerRegistry: 'rtuitlab connection by admin'
+        repository: 'rtuitlab/itlab-front-root'
+        command: 'buildAndPush'
+        Dockerfile: '$(Pipeline.Workspace)/itlab-front-root-build/Dockerfile'
+        buildContext: '$(Pipeline.Workspace)/itlab-front-root-build'
+        tags: |
+          $(Build.BuildId)
+          latest

@@ -3,6 +3,7 @@ FROM nginx
 EXPOSE 9000
 
 COPY fillConfig.sh /scripts/fillConfig.sh
+RUN sed -i 's/\r$//' /scripts/fillConfig.sh
 RUN chmod +x /scripts/fillConfig.sh
 
 COPY nginx.conf /etc/nginx/nginx.conf

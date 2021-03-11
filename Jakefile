@@ -1,13 +1,12 @@
 let exec = require('child_process').exec;
-let execSync = require('child_process').execSync;
 
 desc('Build all apps.');
-task('default', ['buildFront', 'buildProjects', 'buildReports'], function () { });
+task('default', ['buildFront', 'buildProjects', 'buildReports', 'buildRoot'], function () { });
 
 desc('Builds ITLab-Root-Config');
 task('buildRoot', function () {
   return new Promise((resolve, reject) => {
-    exec('npm run build', (err, stdout, stderr) => {
+    exec('npm i && npm run build', (err, stdout, stderr) => {
       if (err) {
         console.error(stderr);
         reject(stderr);
@@ -22,7 +21,7 @@ task('buildRoot', function () {
 desc('Builds ITLab-Front');
 task('buildFront', function () {
   return new Promise((resolve, reject) => {
-    exec('cd ./ITLab-Front && npm run build', (err, stdout, stderr) => {
+    exec('cd ./ITLab-Front && npm i && npm run build', (err, stdout, stderr) => {
       if (err) {
         console.error(stderr);
         reject(stderr);
@@ -37,7 +36,7 @@ task('buildFront', function () {
 desc('Builds ITLab-Reports');
 task('buildReports', function () {
   return new Promise((resolve, reject) => {
-    exec('cd ./ITLab-Reports-Front && npm run build', (err, stdout, stderr) => {
+    exec('cd ./ITLab-Reports-Front && npm i && npm run build', (err, stdout, stderr) => {
       if (err) {
         console.error(stderr);
         reject(stderr);
@@ -52,7 +51,7 @@ task('buildReports', function () {
 desc('Builds ITLab-Projects');
 task('buildProjects', function () {
   return new Promise((resolve, reject) => {
-    exec('cd ./ITLab-Projects-Front && npm run build', (err, stdout, stderr) => {
+    exec('cd ./ITLab-Projects-Front && npm i && npm run build', (err, stdout, stderr) => {
       if (err) {
         console.log(stderr);
         reject(stderr);

@@ -18,14 +18,59 @@ const configure = async () => {
     fileName = (
       await (await fetch(frontends.itlab + "/app.txt")).text()
     ).replace(/[^a-zA-Z0-9.]/g, "");
-  }
 
-  registerApplication({
-    name: "itlab-front",
-    app: () =>
-      System.import(frontends.itlab + (fileName ? "/js/" + fileName : "")),
-    activeWhen: isActive.itLabFront,
-  });
+    let userManager = (
+      await System.import(frontends.itlab + (fileName ? "/js/" + fileName : ""))
+    ).manager;
+
+    registerApplication({
+      name: "itlab-front",
+      app: () =>
+        System.import(frontends.itlab + (fileName ? "/js/" + fileName : "")),
+      activeWhen: isActive.itLabFront,
+    });
+
+    fileName = (
+      await (await fetch(frontends.reports + "/app.txt")).text()
+    ).replace(/[^a-zA-Z0-9.]/g, "");
+
+    registerApplication({
+      name: "itlab-reports",
+      app: () =>
+        System.import(frontends.reports + (fileName ? "/js/" + fileName : "")),
+      activeWhen: isActive.reportsFront,
+      customProps: {
+        userManager: userManager,
+      },
+    });
+  } else {
+    let userManager = (
+      await System.import(
+        frontends.itlab + (fileName ? "/js/" + fileName : "/app.js")
+      )
+    ).manager;
+
+    registerApplication({
+      name: "itlab-front",
+      app: () =>
+        System.import(
+          frontends.itlab + (fileName ? "/js/" + fileName : "/app.js")
+        ),
+      activeWhen: isActive.itLabFront,
+    });
+
+    registerApplication({
+      name: "itlab-reports",
+      app: () =>
+        System.import(
+          frontends.reports + (fileName ? "/js/" + fileName : "/app.js")
+        ),
+      activeWhen: isActive.reportsFront,
+      customProps: {
+        userManager: userManager,
+      },
+    });
+  }
 
   registerApplication({
     name: "projects",

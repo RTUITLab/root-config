@@ -11,3 +11,7 @@ export function itLabFront() {
 export function projectsFront() {
   return prefix(location, "projects");
 }
+
+export function reportsFront() {
+  return prefix(location, "reports");
+}

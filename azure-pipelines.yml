@@ -11,9 +11,9 @@ stages:
         versionSpec: '10.x'
       displayName: 'Install Node.js'
     - script: |
-        npm ci
-        npm run build
-      displayName: 'npm ci, npm build'
+        npm i -g jake
+        jake
+      displayName: 'Jake'
     - publish: deploy
       artifact: itlab-front-root-build
 

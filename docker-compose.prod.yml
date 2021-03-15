@@ -6,6 +6,7 @@ services:
       - FRONT_ROOT_ITLAB=${FRONT_ROOT_ITLAB?Place url to front frontend FRONT_ROOT_ITLAB}
       - FRONT_ROOT_PROJECTS=${FRONT_ROOT_PROJECTS?Place url to projects frontend FRONT_ROOT_PROJECTS}
       - FRONT_ROOT_PROJECTS_API_BASE=${FRONT_ROOT_PROJECTS_API_BASE?Place projects api base FRONT_ROOT_PROJECTS_API_BASE}
+      - FRONT_ROOT_REPORTS=${FRONT_ROOT_REPORTS?Place utl to reports frontend FRONT_ROOT_REPORTS}
   projects-front:
     environment:
       - REACT_APP_API_URL=${REACT_APP_API_URL?Place url to projects backend in REACT_APP_API_URL}

@@ -78,8 +78,8 @@ const configure = async () => {
     activeWhen: isActive.projectsFront,
     customProps: {
       projectsAPIUrl:
-        (frontends.projects_api_base || "http://localhost:5503") +
-        "/api/projects",
+        frontends.projects_api_base ||
+        "http://localhost:5503" + "/api/projects",
     },
   });
 

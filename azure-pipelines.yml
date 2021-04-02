@@ -2,59 +2,58 @@ pool:
   vmImage: ubuntu-latest
 
 stages:
-- stage: Build
-  jobs:
-  - job: BuildFrontRoot
-    steps:
-    - task: NodeTool@0
-      inputs:
-        versionSpec: '10.x'
-      displayName: 'Install Node.js'
-    - script: |
-        npm i -g jake
-        jake
-      displayName: 'Jake'
-    - publish: deploy
-      artifact: itlab-front-root-build
+  - stage: Build
+    jobs:
+      - job: BuildFrontRoot
+        steps:
+          - task: NodeTool@0
+            inputs:
+              versionSpec: "10.x"
+            displayName: "Install Node.js"
+          - script: |
+              npx jake
+            displayName: "Jake"
+          - publish: deploy
+            artifact: itlab-front-root-build
 
-- stage: PushDockerImage
-  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-  displayName: Push Docker Image
-  jobs:  
-  - job: Build
-    displayName: Build
-    pool:
-      vmImage: 'ubuntu-latest'
-    steps:
-    - checkout: none
-    - download: current
-      artifact: itlab-front-root-build
-    - task: Docker@2
-      displayName: Build an image
-      inputs:
-        containerRegistry: 'rtuitlab connection by admin'
-        repository: 'rtuitlab/itlab-front-root'
-        command: 'buildAndPush'
-        Dockerfile: '$(Pipeline.Workspace)/itlab-front-root-build/Dockerfile'
-        buildContext: '$(Pipeline.Workspace)/itlab-front-root-build'
-        tags: |
-          $(Build.BuildId)
-          latest
-- stage: UpdateService
-  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-  jobs:
-  - deployment: Deploy
-    pool:
-      vmImage: 'ubuntu-latest'
-    environment: 'production'
-    strategy:
-      runOnce:
-        deploy:
-          steps:
-            - download: none
-            - task: SSH@0
-              inputs:
-                sshEndpoint: 'swarm manager'
-                runOptions: 'commands'
-                commands: 'docker service update --image rtuitlab/itlab-front-root:$(Build.BuildId) itlab_proxy-front'
-                readyTimeout: '20000'
+  - stage: PushDockerImage
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    displayName: Push Docker Image
+    jobs:
+      - job: Build
+        displayName: Build
+        pool:
+          vmImage: "ubuntu-latest"
+        steps:
+          - checkout: none
+          - download: current
+            artifact: itlab-front-root-build
+          - task: Docker@2
+            displayName: Build an image
+            inputs:
+              containerRegistry: "rtuitlab connection by admin"
+              repository: "rtuitlab/itlab-front-root"
+              command: "buildAndPush"
+              Dockerfile: "$(Pipeline.Workspace)/itlab-front-root-build/Dockerfile"
+              buildContext: "$(Pipeline.Workspace)/itlab-front-root-build"
+              tags: |
+                $(Build.BuildId)
+                latest
+  - stage: UpdateService
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    jobs:
+      - deployment: Deploy
+        pool:
+          vmImage: "ubuntu-latest"
+        environment: "production"
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - download: none
+                - task: SSH@0
+                  inputs:
+                    sshEndpoint: "swarm manager"
+                    runOptions: "commands"
+                    commands: "docker service update --image rtuitlab/itlab-front-root:$(Build.BuildId) itlab_proxy-front"
+                    readyTimeout: "20000"

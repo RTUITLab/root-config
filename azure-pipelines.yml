@@ -11,13 +11,13 @@ stages:
               versionSpec: "10.x"
             displayName: "Install Node.js"
           - script: |
-              npx jake
+              npx jake buildRoot
             displayName: "Jake"
           - publish: deploy
             artifact: itlab-front-root-build
 
   - stage: PushDockerImage
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    condition: and(succeeded(), eq(variables["Build.SourceBranch"], "refs/heads/master"))
     displayName: Push Docker Image
     jobs:
       - job: Build
@@ -40,7 +40,7 @@ stages:
                 $(Build.BuildId)
                 latest
   - stage: UpdateService
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    condition: and(succeeded(), eq(variables["Build.SourceBranch"], "refs/heads/master"))
     jobs:
       - deployment: Deploy
         pool:
@@ -48,6 +48,16 @@ stages:
         environment: "production"
         strategy:
           runOnce:
+            on:
+              failure:
+                steps:
+                  - download: none
+                  - task: SSH@0
+                    inputs:
+                      sshEndpoint: "swarm manager"
+                      runOptions: "commands"
+                      commands: "docker service rollback itlab_proxy-front"
+                      readyTimeout: "20000"
             deploy:
               steps:
                 - download: none

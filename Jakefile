@@ -1,7 +1,7 @@
 let exec = require('child_process').exec;
 
 desc('Build all apps.');
-task('default', ['buildFront', 'buildProjects', 'buildReports', 'buildRoot'], { concurrency: 4 }, function () { });
+task('default', ['buildFront', 'buildProjects', 'buildReports', 'buildRoot'], { concurrency: 1 }, function () { });
 
 desc('Builds ITLab-Root-Config');
 task('buildRoot', function () {

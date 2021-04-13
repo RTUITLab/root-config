@@ -4,7 +4,8 @@
     "lint": "eslint src --ext js",
     "fixLint": "eslint src --ext js --fix",
     "format": "prettier --write './**'",
-    "build": "webpack --mode=production"
+    "build": "webpack --mode=production",
+    "developbuild": "webpack --mode=development"
   },
   "husky": {
     "hooks": {

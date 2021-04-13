@@ -44,7 +44,7 @@ stages:
               versionSpec: "10.x"
             displayName: "Install Node.js"
           - script: |
-              npx jake mode=$${{variables.deployEnvironment}}
+              npx jake mode=${{variables.deployEnvironment}}
             displayName: "Jake"
           - publish: deploy
             artifact: itlab-front-root-build
@@ -76,7 +76,7 @@ stages:
       - deployment: Deploy
         pool:
           vmImage: "ubuntu-latest"
-        environment: deployEnvironment
+        environment: ${{variables.deployEnvironment}}
         strategy:
           runOnce:
             on:
@@ -87,7 +87,7 @@ stages:
                     inputs:
                       sshEndpoint: "swarm manager"
                       runOptions: "commands"
-                      commands: "docker service rollback itlab_proxy-front"
+                      commands: "docker service rollback ${{variables.serviceName}}"
                       readyTimeout: "20000"
             deploy:
               steps:

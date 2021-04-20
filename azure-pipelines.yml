@@ -44,7 +44,7 @@ stages:
               versionSpec: "10.x"
             displayName: "Install Node.js"
           - script: |
-              npx jake mode=${{variables.deployEnvironment}}
+              npx jake buildRoot mode=${{variables.deployEnvironment}}
             displayName: "Jake"
           - publish: deploy
             artifact: itlab-front-root-build

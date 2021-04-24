@@ -14,7 +14,7 @@ class ITLabProjects extends Frontend {
       (process.env.NODE_ENV === "production" ? "" : "rtuitlab-projects.js");
 
     registerApplication({
-      name: "projects",
+      name: "itlab-projects",
       app: () => System.import(url),
       activeWhen: this.activityFunction,
       customProps: {

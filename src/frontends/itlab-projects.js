@@ -1,13 +1,8 @@
 import { registerApplication } from "single-spa";
-import { prefix } from "../helpers";
 import Frontend from "./base-frontend";
 
 class ITLabProjects extends Frontend {
-  activityFunction() {
-    return prefix(location, "projects");
-  }
-
-  async registerFrontend(baseURL, customProps) {
+  async registerFrontend(baseURL, prefixes, customProps) {
     const url =
       baseURL +
       "/" +
@@ -16,7 +11,7 @@ class ITLabProjects extends Frontend {
     registerApplication({
       name: "itlab-projects",
       app: () => System.import(url),
-      activeWhen: this.activityFunction,
+      activeWhen: this.activityFunction(prefixes),
       customProps: {
         url: baseURL,
         ...customProps,

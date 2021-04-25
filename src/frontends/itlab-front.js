@@ -3,11 +3,7 @@ import { getFileName } from "../helpers";
 import Frontend from "./base-frontend";
 
 class ITLabFront extends Frontend {
-  activityFunction() {
-    return true;
-  }
-
-  async registerFrontend(baseURL) {
+  async registerFrontend(baseURL, prefixes) {
     const fileName = (await getFileName(baseURL, "app.txt")).replace(
       /[^a-zA-Z0-9.]/g,
       ""
@@ -27,7 +23,7 @@ class ITLabFront extends Frontend {
     registerApplication({
       name: "itlab-front",
       app: () => Promise.resolve(app),
-      activeWhen: this.activityFunction,
+      activeWhen: this.activityFunction(prefixes),
       customProps: {
         url: baseURL,
       },

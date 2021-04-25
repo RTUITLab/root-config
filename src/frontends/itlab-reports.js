@@ -1,13 +1,9 @@
 import { registerApplication } from "single-spa";
-import { getFileName, prefix } from "../helpers";
+import { getFileName } from "../helpers";
 import Frontend from "./base-frontend";
 
 class ITLabReports extends Frontend {
-  activityFunction() {
-    return prefix(location, "reports");
-  }
-
-  async registerFrontend(baseURL, customProps) {
+  async registerFrontend(baseURL, prefixes, customProps) {
     const fileName = (await getFileName(baseURL, "app.txt")).replace(
       /[^a-zA-Z0-9.]/g,
       ""
@@ -25,7 +21,7 @@ class ITLabReports extends Frontend {
     registerApplication({
       name: "itlab-reports",
       app: () => System.import(url),
-      activeWhen: this.activityFunction,
+      activeWhen: this.activityFunction(prefixes),
       customProps: {
         url: baseURL,
         ...customProps,

@@ -32,8 +32,17 @@
       "imports": {
         "react": "https://unpkg.com/react@16/umd/react.development.js",
         "react-dom": "https://unpkg.com/react-dom@16/umd/react-dom.development.js",
-        "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@5.5.0/lib/system/single-spa.min.js"
+        "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@5.5.0/lib/system/single-spa.min.js",
+        "bootstrap-vue": "https://unpkg.com/bootstrap-vue@2.21.2/dist/bootstrap-vue.min.js"
       }
+    }
+  </script>
+
+  <!-- Frontends importmap -->
+  <script type="systemjs-importmap">
+    {
+      "imports":
+        <% if (importmap) { %><%= importmap %><% } %>
     }
   </script>
 
@@ -46,7 +55,9 @@
       "imports": {
         "react": "https://unpkg.com/react@16/umd/react.development.js",
         "react-dom": "https://unpkg.com/react-dom@16/umd/react-dom.development.js",
-        "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@5.5.0/lib/system/single-spa.min.js"
+        "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@5.5.0/lib/system/single-spa.min.js",
+        "bootstrap-vue": "https://unpkg.com/bootstrap-vue@2.21.2/dist/bootstrap-vue.min.js",
+        "vue": "https://unpkg.com/vue@2.6.12/dist/vue.min.js"
       }
     }
   </script>
@@ -71,6 +82,7 @@
 <body style="padding: 0;">
   <script>
     System.import('/rtuitlab-root-config.js');
+    System.import('vue');
   </script>
   <import-map-overrides-full show-when-local-storage="devtools" dev-libs></import-map-overrides-full>
 </body>

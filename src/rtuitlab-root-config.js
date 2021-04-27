@@ -3,6 +3,7 @@ import { getRoutes } from "./helpers";
 import ITLabFront from "./frontends/itlab-front";
 import ITLabProjects from "./frontends/itlab-projects";
 import ITLabReports from "./frontends/itlab-reports";
+import ITLabNavigation from "./frontends/itlab-navigation";
 
 // Configuration of microfrontends (e.g. registration)
 const configure = async () => {
@@ -11,10 +12,11 @@ const configure = async () => {
 
   const { routes, prefixes } = await getRoutes(frontends);
 
-  const mainFront = await ITLabFront.registerFrontend(
-    frontends.itlab,
-    prefixes.itlab
+  const mainFront = await ITLabNavigation.registerFrontend(
+    frontends.navigation,
+    { routes }
   );
+  ITLabFront.registerFrontend(frontends.itlab, prefixes.itlab);
   ITLabReports.registerFrontend(frontends.reports, prefixes.reports, {
     userManager: mainFront.manager,
   });

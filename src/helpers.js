@@ -28,17 +28,24 @@ export const getRoutes = async (frontends) => {
   let routeParts = await Promise.all(
     Object.values(frontends).map(
       (val) =>
-        new Promise((resolve, reject) => {
+        new Promise((resolve) => {
           fetch(val + "/routes.json")
-            .then((res) => resolve(res))
+            .then((res) =>
+              res
+                .json()
+                .then((data) => resolve(data))
+                .catch((e) => {
+                  console.log("CAN'T LOAD ROUTES:", e); // eslint-disable-line no-console
+                  resolve(undefined);
+                })
+            )
             .catch((e) => {
               console.log("CAN'T LOAD ROUTES:", e); // eslint-disable-line no-console
-              resolve({ json: () => {} });
+              resolve(undefined);
             });
         })
     )
   );
-  routeParts = await Promise.all(routeParts.map((route) => route.json()));
 
   routeParts.forEach((_routes, i) => {
     try {

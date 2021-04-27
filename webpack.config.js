@@ -3,6 +3,12 @@ const singleSpaDefaults = require("webpack-config-single-spa");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const path = require("path");
+const config = require("./src/config.json");
+
+const map = {};
+Object.keys(config).forEach(
+  (frontend) => (map["itlab-" + frontend] = config[frontend])
+);
 
 module.exports = (webpackConfigEnv) => {
   const defaultConfig = singleSpaDefaults({
@@ -28,6 +34,7 @@ module.exports = (webpackConfigEnv) => {
         favicon: "src/favicon.ico",
         templateParameters: {
           isLocal: webpackConfigEnv && webpackConfigEnv.isLocal === "true",
+          importmap: JSON.stringify(map),
         },
       }),
       new CopyPlugin({

@@ -67,11 +67,27 @@
   <script src="https://cdn.jsdelivr.net/npm/systemjs@6.3.1/dist/extras/amd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/systemjs@6.3.1/dist/extras/named-exports.min.js"></script>
   <% } %>
+
+  <style>
+    #load {
+      height: 50vh;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-around;
+    }
+  </style>
 </head>
 <body style="padding: 0;">
   <script>
     System.import('/rtuitlab-root-config.js');
   </script>
+  <div id="load">
+    <svg version="1.1" viewBox="0 0 100 100" class="stub svg-icon svg-fill" style="height: 200px;">
+      <circle cx="50" cy="50" ng-attr-r="{{config.radius}}" ng-attr-stroke-width="{{config.width}}" ng-attr-stroke="{{config.stroke}}" ng-attr-stroke-dasharray="{{config.dasharray}}" fill="none" stroke-linecap="round" r="45" stroke-width="5" stroke="#e2e2e2" stroke-dasharray="70.68583470577035 70.68583470577035" transform="rotate(87 50 50)">
+        <animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="2s" begin="0s" repeatCount="indefinite"></animateTransform>
+      </circle>
+    </svg>
+  </div>
   <import-map-overrides-full show-when-local-storage="devtools" dev-libs></import-map-overrides-full>
 </body>
 </html>

@@ -12,8 +12,15 @@ if (process.env.mode === "production") {
   var BUILD_COMMAND = "npm run developbuild";
 }
 
+if (process.env.concurrency) {
+  var CONCURRENCY = 4;
+  console.info(`Using concurrency`);
+} else {
+  var CONCURRENCY = 1;
+}
+
 desc('Build all apps.');
-task('default', ['buildFront', 'buildProjects', 'buildReports', 'buildRoot'], { concurrency: 1 }, function () { });
+task('default', ['buildFront', 'buildProjects', 'buildReports', 'buildRoot'], { concurrency: CONCURRENCY }, function () { });
 
 desc('Builds ITLab-Root-Config');
 task('buildRoot', function () {

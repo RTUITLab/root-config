@@ -48,14 +48,17 @@
 
 ## Project run
 
-| Folder                | Command       | Default port | CI/CD              |
-| --------------------- | ------------- | ------------ | ------------------ |
-| ./                    | npm start     | 9000         | no                 |
-| ./itlab-front         | npm run serve | 9001         | :white_check_mark: |
-| ./itlab-project-front | npm start     | 9002         | :white_check_mark: |
-| ./itlab-reports-front | npm start     | 9003         | no                 |
+| Folder                  | Command       | Default port | CI/CD              |
+| ----------------------- | ------------- | ------------ | ------------------ |
+| ./                      | npm start     | 9000         | :white_check_mark: |
+| ./itlab-front           | npm run serve | 9001         | :white_check_mark: |
+| ./itlab-project-front   | npm start     | 9002         | :white_check_mark: |
+| ./itlab-reports-front   | npm start     | 9003         | :white_check_mark: |
+| —                       | —             | 9004         | no                 |
+| ./itlab-feedback-front  | npm start     | 9005         | no                 |
+| ./itlab-purchases-front | npm start     | 9006         | no                 |
 
-Application will be run on http://127.0.0.1.xip.io:9000/
+Application will be run on http://127.0.0.1.nip.io:9000/
 
 ### Commit error
 

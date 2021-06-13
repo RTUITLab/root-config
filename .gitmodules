@@ -7,3 +7,6 @@
 [submodule "ITLab-Reports-Front"]
 	path = ITLab-Reports-Front
 	url = https://github.com/RTUITLab/ITLab-Reports-Front.git
+[submodule "ITLab-Purchases-Front"]
+	path = ITLab-Purchases-Front
+	url = https://github.com/RTUITLab/ITLab-Purchases-Front

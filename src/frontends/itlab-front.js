@@ -26,7 +26,10 @@ class ITLabFront extends Frontend {
 
     registerApplication({
       name: "itlab-front",
-      app: () => Promise.resolve(app),
+      app: () => {
+        document.getElementById("load").remove();
+        return Promise.resolve(app);
+      },
       activeWhen: this.activityFunction,
       customProps: {
         url: baseURL,

@@ -1,4 +1,5 @@
 import { start } from "single-spa";
+import ITLabFeedback from "./frontends/itlab-feedback";
 import ITLabFront from "./frontends/itlab-front";
 import ITLabProjects from "./frontends/itlab-projects";
 import ITLabReports from "./frontends/itlab-reports";
@@ -18,6 +19,9 @@ const configure = async () => {
 
   const mainFront = await ITLabFront.registerFrontend(frontends.itlab);
   ITLabReports.registerFrontend(frontends.reports, {
+    userManager: mainFront.manager,
+  });
+  ITLabFeedback.registerFrontend(frontends.feedback, {
     userManager: mainFront.manager,
   });
   ITLabProjects.registerFrontend(frontends.projects, {

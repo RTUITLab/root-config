@@ -7,6 +7,10 @@ services:
       - FRONT_ROOT_PROJECTS=${FRONT_ROOT_PROJECTS?Place url to projects frontend FRONT_ROOT_PROJECTS}
       - FRONT_ROOT_PROJECTS_API_BASE=${FRONT_ROOT_PROJECTS_API_BASE?Place projects api base FRONT_ROOT_PROJECTS_API_BASE}
       - FRONT_ROOT_REPORTS=${FRONT_ROOT_REPORTS?Place utl to reports frontend FRONT_ROOT_REPORTS}
+      - FRONT_ROOT_FEEDBACK=${FRONT_ROOT_FEEDBACK?Place utl to reports frontend FRONT_ROOT_FEEDBACK}
   projects-front:
     environment:
       - REACT_APP_API_URL=${REACT_APP_API_URL?Place url to projects backend in REACT_APP_API_URL}
+  feedback-front:
+    environment:
+      - REACT_APP_API_URL=${REACT_APP_FEEDBACK_API_URL?Place url to feedback backend in REACT_APP_FEEDBACK_API_URL}

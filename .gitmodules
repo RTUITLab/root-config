@@ -7,3 +7,6 @@
 [submodule "ITLab-Reports-Front"]
 	path = ITLab-Reports-Front
 	url = https://github.com/RTUITLab/ITLab-Reports-Front.git
+[submodule "ITLab-Feedback-Front"]
+	path = ITLab-Feedback-Front
+	url = https://github.com/RTUITLab/ITLab-Feedback-Front.git

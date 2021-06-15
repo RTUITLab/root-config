@@ -26,3 +26,5 @@ services:
       ConnectionStrings__UsersApiBase: http://proxy:5500
       ConnectionStrings__SalaryApiBase: http://proxy:5500
       ConnectionStrings__FilesApiBase: http://proxy:5500/api/mfs
+  feedback-front:
+    image: rtuitlab/itlab-feedback-front

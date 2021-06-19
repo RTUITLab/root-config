@@ -27,6 +27,7 @@ const configure = async () => {
   ITLabProjects.registerFrontend(frontends.projects, {
     projectsAPIUrl:
       frontends.projects_api_base || "http://localhost:5503" + "/api/projects",
+    userManager: mainFront.manager,
   });
 
   start({

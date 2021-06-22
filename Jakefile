@@ -1,15 +1,15 @@
 let exec = require('child_process').exec;
 
+// Set default build command
+let BUILD_COMMAND = 'npm run developbuild';
+
 console.info(`Using mode=${process.env.mode}`);
-if (process.env.mode === "production") {
-  var BUILD_COMMAND = "npm run build";
-} else if (process.env.mode === "development") {
-  var BUILD_COMMAND = "npm run developbuild";
-} else {
-  console.warn("No mode was provided\nUsing 'development' mode");
-  console.warn("To provide mode set the environmental variable:\n");
-  console.warn("jake mode='your_mode'\n");
-  var BUILD_COMMAND = "npm run developbuild";
+if (process.env.mode === 'production') {
+  BUILD_COMMAND = 'npm run build';
+} else if (process.env.mode !== 'development') {
+  console.warn(`No mode was provided\nUsing 'development' mode`);
+  console.warn('To provide mode set the environmental variable:\n');
+  console.warn(`jake mode='your_mode'\n`);
 }
 
 if (process.env.concurrency) {
@@ -20,7 +20,13 @@ if (process.env.concurrency) {
 }
 
 desc('Build all apps.');
-task('default', ['buildFront', 'buildProjects', 'buildReports', 'buildRoot'], { concurrency: CONCURRENCY }, function () { });
+task('default', [
+  'buildFront',
+  'buildProjects',
+  'buildReports',
+  'buildFeedback',
+  'buildRoot'
+], { concurrency: CONCURRENCY }, function () { });
 
 desc('Builds ITLab-Root-Config');
 task('buildRoot', function () {
@@ -71,6 +77,21 @@ desc('Builds ITLab-Projects');
 task('buildProjects', function () {
   return new Promise((resolve, reject) => {
     exec(`cd ./ITLab-Projects-Front && npm ci && ${BUILD_COMMAND}`, (err, stdout, stderr) => {
+      if (err) {
+        console.log(stderr);
+        reject(stderr);
+      }
+
+      console.log(stdout);
+      resolve(true);
+    });
+  });
+});
+
+desc('Builds ITLab-Feedback');
+task('buildFeedback', function () {
+  return new Promise((resolve, reject) => {
+    exec(`cd ./ITLab-Feedback-Front && npm ci && ${BUILD_COMMAND}`, (err, stdout, stderr) => {
       if (err) {
         console.log(stderr);
         reject(stderr);

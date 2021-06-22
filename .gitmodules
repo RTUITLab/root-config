@@ -10,3 +10,6 @@
 [submodule "ITLab-Purchases-Front"]
 	path = ITLab-Purchases-Front
 	url = https://github.com/RTUITLab/ITLab-Purchases-Front
+[submodule "ITLab-Feedback-Front"]
+	path = ITLab-Feedback-Front
+	url = https://github.com/RTUITLab/ITLab-Feedback-Front.git

@@ -1,6 +1,7 @@
 import { start } from "single-spa";
 import ITLabFront from "./frontends/itlab-front";
 import ITLabProjects from "./frontends/itlab-projects";
+import ITLabPurchases from "./frontends/itlab-purchases";
 import ITLabReports from "./frontends/itlab-reports";
 
 // registerApplication({
@@ -23,6 +24,9 @@ const configure = async () => {
   ITLabProjects.registerFrontend(frontends.projects, {
     projectsAPIUrl:
       frontends.projects_api_base || "http://localhost:5503" + "/api/projects",
+  });
+  ITLabPurchases.registerFrontend(frontends.purchases, {
+    userManager: mainFront.manager,
   });
 
   start({

@@ -2,6 +2,7 @@ import { start } from "single-spa";
 import ITLabFeedback from "./frontends/itlab-feedback";
 import ITLabFront from "./frontends/itlab-front";
 import ITLabProjects from "./frontends/itlab-projects";
+import ITLabPurchases from "./frontends/itlab-purchases";
 import ITLabReports from "./frontends/itlab-reports";
 
 // registerApplication({
@@ -27,6 +28,9 @@ const configure = async () => {
   ITLabProjects.registerFrontend(frontends.projects, {
     projectsAPIUrl:
       frontends.projects_api_base || "http://localhost:5503" + "/api/projects",
+    userManager: mainFront.manager,
+  });
+  ITLabPurchases.registerFrontend(frontends.purchases, {
     userManager: mainFront.manager,
   });
 
